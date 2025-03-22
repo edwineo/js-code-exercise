@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NodeList 和 childNodes 示例</title>
+</head>
+<body>
+  <ul id="my-list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <script>
+    const list = document.getElementById("my-list");
+
+    // 使用 childNodes 属性访问子节点
+    const childNodes = list.childNodes;
+    console.log(childNodes); // 包含文本节点、元素节点、注释节点等
+
+    // 使用 NodeList 和 forEach 遍历元素节点
+    const listItems = list.querySelectorAll("li");
+    listItems.forEach(item => {
+      console.log(item.textContent);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>querySelector 和 querySelectorAll 示例</title>
+</head>
+<body>
+  <p class="example-class">第一个段落</p>
+  <p class="example-class">第二个段落</p>
+  <p class="example-class">第三个段落</p>
+  <button id="my-button">点击我</button>
+
+  <script>
+    const firstParagraph = document.querySelector(".example-class"); // 获取第一个匹配的段落
+    const allParagraphs = document.querySelectorAll(".example-class"); // 获取所有匹配的段落
+
+    console.log(firstParagraph); // 打印第一个段落
+    console.log(allParagraphs); // 打印包含所有匹配段落的 NodeList
+  </script>
+</body>
+</html>
