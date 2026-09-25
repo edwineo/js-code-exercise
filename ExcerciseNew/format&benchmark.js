@@ -33,12 +33,12 @@ function format1(str) {
 // solution two:
 function format2(str) {
     // return `${str.slice(0, 4)}Y${str.slice(4, 6)}M${str.slice(6, 8)}D ${str.slice(8, 10)}:${str.slice(10, 12)}:${str.slice(12)}`
-    const regex = /(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/
-    const matches = str.match(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/g)
+    const regex = /(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/g
+    const matches = str.match(regex)
     console.log(matches)
 }
 
-console.log(format1(inputString));
+console.log(format1(inputString))
 console.log(format2(inputString))
 
 // benchmark test

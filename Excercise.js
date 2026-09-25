@@ -186,9 +186,21 @@ function deepClone (obj, memo = new WeakMap()) {
   if (!isObject(obj)) {
     return obj
   }
-  // 判断缓存
+  // 判断缓存，避免循环引用
   if (memo.has(obj)) {
     return memo.get(obj)
+  }
+  // 处理 Date
+  if (obj instanceof Date) {
+    return new Date(obj);
+  }
+  // 处理 RegExp
+  if (obj instanceof RegExp) {
+    return new RegExp(obj.source, obj.flags);
+  }
+  // 处理 DOM 节点（如 document.body）
+  if (obj instanceof Node) {
+    return obj.cloneNode(true);
   }
   // 开始深拷贝
   const newObj = Array.isArray(obj) ? [] : {}
@@ -231,6 +243,16 @@ function myInstanceof (instance, cclass) {
 
 // 12. curry
 function currying (fn, ...args) {
+  return (...nextArgs) => {
+    const allArgs = [...args, ...nextArgs]
+    if (allArgs.length >= fn.length) {
+      return fn(...allArgs)
+    } else {
+      return curry(fn, ...allArgs)
+    }
+  }
+}
+function curry (fn, ...args) {
   return (...nextArgs) => {
     const allArgs = [...args, ...nextArgs]
     if (allArgs.length >= fn.length) {
